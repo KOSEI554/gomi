@@ -8,7 +8,6 @@ body > .container {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background-color: rgb(174, 226, 247);
 }
 .jumbotron {
   padding-top: 3rem;
@@ -21,6 +20,9 @@ body {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
+}
+p{
+  color: black;
 }
 
 .jumbotron p:last-child {
@@ -88,11 +90,15 @@ text-decoration: none;
 }
 .post:hover
 {
-    opacity: 0.85 ;
+  opacity: 0.85 ;
 }
 .manegement:hover{
   opacity: 0.85 ;
 }
 .material-icons.large-size {
-	font-size: 42px;
+  font-size: 42px;
+  color: rgb(64, 241, 241);
+}
+.btn-success{
+  background-color: rgb(25, 113, 247);
 }

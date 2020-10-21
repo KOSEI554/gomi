@@ -9,6 +9,7 @@ const passport = require('passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const boards = require('./routes/boards');
+const board = require('./routes/board');
 const register = require('./routes/register'); 
 const login = require('./routes/login');
 const logout = require('./routes/logout');
@@ -20,6 +21,8 @@ const eventtop = require('./routes/eventtop');
 const setting = require('./routes/setting');
 const goal = require('./routes/goal');
 const making = require('./routes/making');
+const create = require('./routes/create');
+const comment = require('./routes/comment');
 const setUser = require('./routes/setUser');
 
 
@@ -50,6 +53,7 @@ app.use(express.static(dir));
 app.use('/', setUser, indexRouter);
 app.use('/users', usersRouter);
 app.use('/boards', setUser, boards);
+app.use('/board', board);
 app.use('/register', register);
 app.use('/login', login);
 app.use('/logout', logout);
@@ -61,6 +65,8 @@ app.use('/eventtop', eventtop);
 app.use('/setting', setting);
 app.use('/goal', goal);
 app.use('/making', making);
+app.use('/create', create);
+app.use('/comment', comment);
 
 
 // catch 404 and forward to error handler

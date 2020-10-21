@@ -86,4 +86,42 @@ router.post('/', (req, res, next)=> {
   });
 });
 
+
+//イベント投稿表示
+router.get('/event', (req, res, next) =>{
+  const query = 'SELECT E.id, E.user_id, E.date, E.time, E.prefecture, E.concept, E.img_url, ifnull(U.username, \'名無し\') AS eventname, DATE_FORMAT(E.created_at, \'%Y年%m月%d日 %k時%i分\') AS created_at FROM events E LEFT OUTER JOIN users U ON E.user_id = U.id ORDER BY E.created_at DESC'; 
+  connection.query(query, function(err, rows) {
+    res.render('event',{eventList: rows});
+  });
+});
+
+
+//ログインユーザーだけの投稿表示
+router.get('/account', (req, res, next) =>{
+  const userId = req.session.user_id? req.session.user_id: 0; 
+  const query = `SELECT * FROM posts where user_id = ${userId} ORDER BY created_at desc`
+  connection.query(query, function(err, rows) {
+    res.render('account',{postList: rows});
+  });
+});
+
+//コメント表示
+router.get('/example', (req,res) =>{
+  // const userId = req.session.user_id? req.session.user_id: 0;
+  console.log('query', req.query);
+  // const postId = req.query.id; 
+  const query = `SELECT * FROM comments where post_id = ${postId}`;
+  connection.query(query,(err,rows) =>{
+  console.log(rows);
+  res.render('comment',{postList: [{}], commentList: rows});
+  });
+});
+// router.get("/comment",(req,res,next) =>{
+//   //const userId = req.session.user_id? req.session.user_id: 0; 
+//   const query = 'SELECT * FROM comments where id = 3';
+//   connection.query(query,(err,rows)=>{
+//     res.render("comment", {commentList: rows});
+//   });
+// });
+
 module.exports = router;
