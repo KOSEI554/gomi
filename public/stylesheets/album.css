@@ -1,0 +1,98 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body > .container {
+  padding: 60px 15px 0;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background-color: rgb(174, 226, 247);
+}
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron h1 {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color:rgb(214, 240, 247);
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+/* footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: rgb(186, 248, 248);
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.footer-container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.footer-container .text-muted {
+  margin: 20px 0;
+} */
+
+.post,.management
+    {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    }
+.pagetop a
+{
+display: block;
+text-decoration: none;
+}
+.post:hover
+{
+    opacity: 0.85 ;
+}
+.manegement:hover{
+  opacity: 0.85 ;
+}
+.material-icons.large-size {
+	font-size: 42px;
+}

@@ -1,18 +1,83 @@
-<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>新規登録</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../stylesheets/style.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <form class="form-signin" action="/register" method="POST">
+  <img class="mb-4" src="/images/logo.png" alt="" width="100" height="100">
+  <h1 class="h3 mb-3 font-weight-normal">ようこそ</h1>
+  <label for="inputEmail" class="sr-only">ユーザー名</label>
+  <input type="text" id="inputname" class="form-control" name="user_name" placeholder="ユーザー名" required autofocus>
+  <label for="inputEmail" class="sr-only">メールアドレス</label>
+  <input type="email" id="inputEmail" class="form-control" name="email" placeholder="メールアドレス" required autofocus>
+  <label for="inputPassword" class="sr-only">パスワード</label>
+  <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="パスワード" required>
+  <div class="checkbox mb-3">
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">新規登録</button>
+  <a href="/login">ログイン</a>
+  <p class="mt-5 mb-3 text-muted">Pick Up CC</p>
+</form>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="/images/favicon (1).png" />
+  <link rel="icon" href="/images/favicon (1).png" type="image/gif" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>新規登録</title>
 </head>
-<body>
-  <form action="/create" method="POST">
-    <p>メールアドレス：<input type="text" name="mail"></p>
-    <p>パスワード：<input type="text" name="pass"></p>
-    <p>ユーザー名：<input type="text" name="user_name"></p>
-    <p>都道府県：<input type="text" name="pre"></p>
-    <p>学校名：<input type="text" name="school_name"></p>
-    <input type="submit" value="新規登録">
-  </form>
+<body class="register">
+  <div class="wrapper">
+    <form action="/register" method="post" class="board-form">
+        <li class="label">ユーザー名</li><input type="text" name="user_name" class="input" required><br>
+        <br>
+        <li class="label">Eメール</li><input type="email" name="email" class="input" required><br>
+        <br>
+        <li class="label">パスワード</li><input type="password" name="pass" class="input" required><br>
+        <br>
+        <button type="submit" class="submit">新規会員登録</button>
+    </form>
+    <% if (typeof emailExists !== 'undefined') { %>
+      <p class="error"><%= emailExists %></p>
+  <% } %>
+</div>
 </body>
-</html>
+</html> -->

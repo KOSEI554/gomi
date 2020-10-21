@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="/images/favicon (1).png" />
+  <link rel="icon" href="/images/favicon (1).png" type="image/gif" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>タイムライン</title>
+</head>
+<body class="timeline">
+  <header class="page-header">
+    <div class="header">
+      タイムライン
+    </div>  
+  </header>
+  <a href="/userpage">戻る</a>
+  <ul>
+    <% postList.forEach(function(postItem) { %>
+        <li>
+            <div>
+                <p><%= postItem.message %></p>
+                <img src="/images/<%= postItem.img_url %>" width="300" height="250"></img>
+                <p><%= postItem.username %><%= postItem.created_at %></p>
+            </div>
+        </li>
+    <% }); %>
+  </ul>
+</body>
+</html>

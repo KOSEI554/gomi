@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="/images/favicon (1).png" />
+  <link rel="icon" href="/images/favicon (1).png" type="image/gif" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Document</title>
+</head>
+<body class="login">
+  <div class="wrapper">
+    <form action="/login" method="post" class="board-form">
+      <li class="label">Eメール</li><input type="email" name="email" class="input" required><br>
+      <br>
+      <li class="label">パスワード</li><input type="password" name="password" class="input" required><br>
+      <br>
+      <button type="submit" class="submit">ログイン</button>
+    </form>
+    <% if (typeof noUser !== 'undefined') { %>
+        <p class="error"><%= noUser %></p>
+    <% } %>
+    <a href="/register" class="btn">新規登録</a>
+</div>
+</body>
+</html>
