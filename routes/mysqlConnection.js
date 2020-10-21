@@ -2,8 +2,8 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: 'xquk59',
+  user: 'node',
+  password: 'KOSEi5464!',
   database: 'gomi_app'
 });
 
