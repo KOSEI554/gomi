@@ -99,6 +99,9 @@ router.get('/event', (req, res, next) =>{
 //ログインユーザーだけの投稿表示
 router.get('/account', (req, res, next) =>{
   const userId = req.session.user_id? req.session.user_id: 0; 
+  // if(userId === null){
+  //   res.redirect("/");
+  // }
   const query = `SELECT * FROM posts where user_id = ${userId} ORDER BY created_at desc`
   connection.query(query, function(err, rows) {
     res.render('account',{postList: rows});
@@ -116,12 +119,18 @@ router.get('/example', (req,res) =>{
   res.render('comment',{postList: [{}], commentList: rows});
   });
 });
-// router.get("/comment",(req,res,next) =>{
-//   //const userId = req.session.user_id? req.session.user_id: 0; 
-//   const query = 'SELECT * FROM comments where id = 3';
-//   connection.query(query,(err,rows)=>{
-//     res.render("comment", {commentList: rows});
-//   });
-// });
+
+
+//投稿削除
+router.post("/delete/:id",(req,res) => {
+  connection.query(
+    "DELETE FROM posts WHERE id = ?",
+    [req.params.id],
+    (err,results) => {
+      res.redirect("/account");
+    }
+  );
+  // console.log(req.params.id);
+});
 
 module.exports = router;

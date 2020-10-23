@@ -5,9 +5,10 @@ const connection = require('./mysqlConnection');
 
 router.get('/', function(req, res, next) {
   if (req.session.user_id) {
+    console.log(req.session.user_id);
     res.redirect('/');
   } else {
-    res.render('login');
+    res.redirect('/login');
   }
 });
 
@@ -23,7 +24,7 @@ router.post('/', function(req, res, next) {
       req.session.username = userName;
       res.redirect('/userpage');
     } else {
-      res.render('login', {
+      res.redirect('/login', {
         title: 'ログイン',
         noUser: 'メールアドレスとパスワードが一致するユーザーはいません'
       });

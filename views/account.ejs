@@ -90,30 +90,34 @@
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     </div>
   </div>
-  <button type="button" class="btn btn-light btn-sm management"><a href="/making">イベント管理</a></button>
-
+  <button type="button" class="btn btn-light btn-sm management"><a href="/management">イベント管理</a></button>
+  
   <div class="album py-5 bg-light">
-    <% postList.forEach(function(postItem) { %>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <p class="text-center"><%= postItem.username %></p>            
-                <img class="bd-placeholder-img card-img-top" src="/images/<%= postItem.img_url %>" alt=""  width="100%" height="225">
-                <div class="card-body">
-                  <p class="card-text"><%= postItem.message %></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn  btn-outline-secondary">最高</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">いいね</button>
+    <div class="container">
+      <div class="row">
+        <% postList.forEach(function(postItem) { %>
+          <div class="col-md-4">
+              <a href="/comment?id=<%= postItem.id%>">
+                <div class="card mb-4 shadow-sm">
+                  <p class="text-center"><%= postItem.username %></p>            
+                  <img class="bd-placeholder-img card-img-top card" src="/images/<%= postItem.img_url %>" alt=""  width="100%" height="225" style="object-fit: cover;">
+                  <div class="card-body">
+                    <p class="card-text"><%= postItem.message %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="submit" class="btn  btn-outline-secondary">最高</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">いいね</button>
+                      </div>
+                      <small class="text-muted"><%= postItem.created_at %></small>
+                      <div class="reply"><a href="/comment?id=<%= postItem.id%>"><i class="material-icons large-size">reply</i></a></div>
                     </div>
-                    <small class="text-muted"><%= postItem.created_at %></small>
-                    <div><a href=""><i class="material-icons large-size">reply</i></a></div>
                   </div>
                 </div>
-              </div>
-            </div>
-    <% }); %>
+              </a>
+          </div>
+        <% }); %>
+      </div>
+    </div>
   </div>
 </main>
 

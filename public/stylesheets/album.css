@@ -102,3 +102,6 @@ text-decoration: none;
 .btn-success{
   background-color: rgb(25, 113, 247);
 }
+.card{
+  object-fit: cover;
+}

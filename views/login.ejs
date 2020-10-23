@@ -45,6 +45,9 @@
   </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
   <a href="/register">新規登録</a>
+  <% if (typeof noUser !== 'undefined') { %>
+    <p class="error"><%= noUser %></p>
+  <% } %>
   <p class="mt-5 mb-3 text-muted">Pick Up CC</p>
 </form>
 </body>
