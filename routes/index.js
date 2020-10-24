@@ -34,14 +34,20 @@ router.get("/toppage", (req,res) =>{
 router.get("/userpage", (req,res) =>{
   const userName = req.session.username;
   const user = {username: userName}
-  res.render("userpage",{user: user});
-
+  // res.render("userpage",{user: user});
+  const query = 'SELECT P.id, P.user_id, P.message, P.img_url, ifnull(U.username, \'名無し\') AS username, DATE_FORMAT(P.created_at, \'%Y年%m月%d日 %k時%i分\') AS created_at FROM posts P LEFT OUTER JOIN users U ON P.user_id = U.id ORDER BY P.created_at DESC'; 
+  connection.query(query, function(err, rows) {
+    res.render('userpage',{user: user,postList: rows});
+  });
   //できてる
   // const user = {username:"七字"}
   // res.render("userpage",{
   //   user: user
   // });
 });
+
+//ユーザーページに写真だけ表示
+
 
 //投稿表示
 router.get('/timeline', (req, res, next) =>{
@@ -96,6 +102,8 @@ router.get('/event', (req, res, next) =>{
 });
 
 
+
+
 //ログインユーザーだけの投稿表示
 router.get('/account', (req, res, next) =>{
   const userId = req.session.user_id? req.session.user_id: 0; 
@@ -132,5 +140,41 @@ router.post("/delete/:id",(req,res) => {
   );
   // console.log(req.params.id);
 });
+
+//参加イベント投稿詳細
+router.get("/eventjoin",(req,res) =>{
+  //console.log("届いてる");
+  //console.log(req.query);
+  const eventId = req.query.id;
+  //console.log(eventId);
+  const query = `SELECT * FROM events where id = ${eventId}`
+  connection.query(query, (err,event_rows) =>{
+      res.render('eventjoin',{eventList: event_rows});
+  });
+});
+
+//イベント管理編集画面
+router.get("/edit",(req,res) =>{
+  console.log("届いてる");
+  //console.log(req.query);
+  const eventId = req.query.id;
+  //console.log(eventId);
+  const query = `SELECT * FROM events where id = ${eventId}`
+  connection.query(query, (err,event_rows) =>{
+      res.render('edit',{eventList: event_rows});
+  });
+});
+
+//編集画面へ
+router.get("/edit/:id",(req,res) => {
+  connection.query(
+    "SELECT * FROM events WHERE id = ?",
+    [req.params.id],
+    (err, results) => {
+      res.render("update", {item:results[0]});
+    }
+  );
+});
+
 
 module.exports = router;

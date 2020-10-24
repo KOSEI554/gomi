@@ -15,7 +15,7 @@ const login = require('./routes/login');
 const logout = require('./routes/logout');
 const upload = require('./routes/upload');
 const account = require('./routes/account');
-const event = require('./routes/event');
+const eventjoin = require('./routes/eventjoin');
 const event_detail = require('./routes/event_detail');
 const eventtop = require('./routes/eventtop');
 const setting = require('./routes/setting');
@@ -25,6 +25,7 @@ const create = require('./routes/create');
 const comment = require('./routes/comment');
 const management = require('./routes/management');
 const edit = require('./routes/edit');
+const update = require('./routes/update');
 const setUser = require('./routes/setUser');
 
 
@@ -64,7 +65,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/upload', upload);
 app.use('/account', account);
-app.use('/event', event);
+app.use('/eventjoin', eventjoin);
 app.use('/event_detail', event_detail);
 app.use('/eventtop', eventtop);
 app.use('/setting', setting);
@@ -74,6 +75,7 @@ app.use('/create', create);
 app.use('/comment', comment);
 app.use('/management', management);
 app.use('/edit', edit);
+app.use('/update', update);
 
 
 

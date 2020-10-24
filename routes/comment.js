@@ -6,11 +6,8 @@ const connection = require('./mysqlConnection');
 router.get("/",(req,res) =>{
   console.log(req.query);
   const postId = req.query.id;
-  //console.log("id", id);
-  //const postId = req.session.id? req.session.id: 0; 
   const query = `SELECT * FROM posts where id = ${postId}`
   connection.query(query, (err,post_rows) =>{
-    //console.log(rows);
     const query = `SELECT * FROM comments where post_id = ${postId} ORDER BY created_at DESC`;
     connection.query(query,(err,comment_rows) =>{
     //console.log(rows);
