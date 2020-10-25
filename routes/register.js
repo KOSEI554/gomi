@@ -24,7 +24,7 @@ router.post('/', (req, res) =>{
       });
     } else {
       connection.query(registerQuery, (err, rows)=> {
-        res.redirect('/login');
+        res.redirect('/');
       });
     }
   });

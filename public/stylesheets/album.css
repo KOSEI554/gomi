@@ -40,7 +40,7 @@ p{
   max-width: 40rem;
 }
 
-.footer {
+.footer:hover {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -85,6 +85,7 @@ footer p {
     position: fixed;
     bottom: 16px;
     right: 16px;
+    
     }
 .pagetop a
 {

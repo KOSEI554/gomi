@@ -96,6 +96,7 @@ router.post('/', (req, res, next)=> {
 //イベント投稿表示
 router.get('/event', (req, res, next) =>{
   const query = 'SELECT E.id, E.user_id, E.date, E.time, E.prefecture, E.concept, E.img_url, ifnull(U.username, \'名無し\') AS eventname, DATE_FORMAT(E.created_at, \'%Y年%m月%d日 %k時%i分\') AS created_at FROM events E LEFT OUTER JOIN users U ON E.user_id = U.id ORDER BY E.created_at DESC'; 
+  console.log(query);
   connection.query(query, function(err, rows) {
     res.render('event',{eventList: rows});
   });
