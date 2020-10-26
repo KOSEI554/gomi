@@ -4,12 +4,16 @@ const moment = require('moment');
 const connection = require('./mysqlConnection');
 
 router.get("/",(req,res) =>{
-  const eventId = req.body.id
+  //console.log(req.query);
+  //console.log("届いてる");
+  const eventId = req.query.id
   const query = `SELECT * FROM events WHERE id = ${eventId}`
   connection.query(query, (err, event_rows) =>{
-    const query = `SELECT * FROM participants WHERE event_id =${eventId} ORDER BY created_at DESC`;
+    //console.log(event_rows);
+    const query = `SELECT participants.*,users.username AS user_name FROM participants INNER JOIN users ON participants.user_id = users.id WHERE participants.event_id = ${eventId}`;
+    //console.log(query);
     connection.query(query,(err,participant_rows) =>{
-      //console.log(rows);
+      console.log(participant_rows);
         res.render('eventjoin',{eventList: event_rows, participantList: participant_rows});
     })
   }); 
@@ -20,7 +24,7 @@ router.post("/", (req,res)=>{
   const eventId = req.body.id;
   const createdAt = moment().format('YYYY-MM-DD HH:mm:ss'); 
   //console.log(comment);
-  const query = 'INSERT INTO participants (user_id, event_id, created_at) VALUES ("' + userId + '",'+'"' + eventId + '","' + createdAt + '")';
+  const query = 'INSERT INTO participants (user_id, event_id) VALUES ("' + userId + '",'+'"' + eventId + '")';
   connection.query(query,(err,rows) =>{
     res.redirect(`/eventjoin?id=${eventId}`);
   });

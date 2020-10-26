@@ -84,19 +84,26 @@
                     </div>
                   </div>
               </div>
-              <form action="/eventjoin" method="POST">
-                <div class="input-group">
-                  <input type="hidden" name="id" value="<%= eventList[0].id%>">
-                  <div class="btn-group">
-                    <button type="submit" class="btn  btn-outline-secondary">参加</button>
-                  </div>
+              <% }); %>
+            </div>
+            <% participantList.forEach(function(participantItem) { %>
+              <div class="card">
+                <div class="card-body">
+                  <p><%= participantItem.user_name %></p>
                 </div>
-              </form>
-        <% }); %>
-      </div>
-    </div>
-
-  </div>
+              </div>
+            <% }); %>
+          </div>
+          
+        </div>
+        <form action="/eventjoin" method="POST">
+          <div class="input-group">
+            <input type="hidden" name="id" value="<%= eventList[0].id%>">
+            <div class="input-group-append">
+              <button class="btn btn-success" type="submit">参加</button>
+            </div>
+          </div>
+        </form>
 </main>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

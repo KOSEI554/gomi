@@ -4,19 +4,28 @@ const moment = require('moment');
 const connection = require('./mysqlConnection');
 
 router.get("/",(req,res) =>{
-  console.log(req.query);
+  //console.log(req.query);
   const postId = req.query.id;
   const query = `SELECT * FROM posts where id = ${postId}`
   connection.query(query, (err,post_rows) =>{
-    const query = `SELECT * FROM comments where post_id = ${postId} ORDER BY created_at DESC`;
-    connection.query(query,(err,comment_rows) =>{
-    //console.log(rows);
+    //console.log(post_rows);
+    const query = `SELECT comments.*,users.username AS user_name FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.post_id = ${postId}`;
+    // const query = "SELECT * FROM comments INNER JOIN users ON comments.user_id = users.id";
+    connection.query(query, (err,comment_rows) =>{
+      console.log(comment_rows);
       res.render('comment',{postList: post_rows, commentList: comment_rows});
     });
     // console.log(query);
     // console.log(rows);
   });
 });
+
+// router.get("/", (req,res) =>{
+//   const userId = req.session.user_id? req.session.user_id: 0; 
+//   const postId = req.body.id;
+//   const comment = req.body.comment;
+//   const query = "SELECT * FROM comments INNER JOIN users ON comments.user_id = users.id";
+// });
 
 router.post("/", (req,res)=>{
   const userId = req.session.user_id? req.session.user_id: 0; 

@@ -96,7 +96,6 @@ router.post('/', (req, res, next)=> {
 //イベント投稿表示
 router.get('/event', (req, res, next) =>{
   const query = 'SELECT E.id, E.user_id, E.date, E.time, E.prefecture, E.concept, E.img_url, ifnull(U.username, \'名無し\') AS eventname, DATE_FORMAT(E.created_at, \'%Y年%m月%d日 %k時%i分\') AS created_at FROM events E LEFT OUTER JOIN users U ON E.user_id = U.id ORDER BY E.created_at DESC'; 
-  console.log(query);
   connection.query(query, function(err, rows) {
     res.render('event',{eventList: rows});
   });
@@ -143,14 +142,24 @@ router.post("/delete/:id",(req,res) => {
 });
 
 //参加イベント投稿詳細
-router.get("/eventjoin",(req,res) =>{
+// router.get("/eventjoin",(req,res) =>{
+//   //console.log(req.query);
+//   const eventId = req.query.id;
+//   //console.log(eventId);
+//   const query = `SELECT * FROM events where id = ${eventId}`
+//   connection.query(query, (err,event_rows) =>{
+//     //console.log("届いてる");
+//       res.render('eventjoin',{eventList: event_rows});
+//   });
+// });
+
+//参加者表示
+router.get("/example" , (req,res) =>{
   //console.log("届いてる");
-  //console.log(req.query);
-  const eventId = req.query.id;
-  //console.log(eventId);
-  const query = `SELECT * FROM events where id = ${eventId}`
-  connection.query(query, (err,event_rows) =>{
-      res.render('eventjoin',{eventList: event_rows});
+  const query = `SELECT * FROM participants where event_id = ${eventId}`;
+  connection.query(query,(err,rows) =>{
+  console.log(rows);
+  res.render('eventjoin',{eventList: [{}], participantList: rows});
   });
 });
 
