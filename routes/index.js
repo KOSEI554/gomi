@@ -163,6 +163,16 @@ router.get("/example" , (req,res) =>{
   });
 });
 
+//参加予定イベント表示
+// router.get("/example" , (req,res) =>{
+//   //console.log("届いてる");
+//   const query = `SELECT * FROM events where participants_id = ${paricipantId}`;
+//   connection.query(query,(err,rows) =>{
+//   console.log(rows);
+//   res.render('account',{participantList: [{}], eventList: rows});
+//   });
+// });
+
 //イベント管理編集画面
 router.get("/edit",(req,res) =>{
   console.log("届いてる");

@@ -21,8 +21,7 @@ router.get("/",(req,res) =>{
 
 router.post("/", (req,res)=>{
   const userId = req.session.user_id? req.session.user_id: 0; 
-  const eventId = req.body.id;
-  const createdAt = moment().format('YYYY-MM-DD HH:mm:ss'); 
+  const eventId = req.body.id; 
   //console.log(comment);
   const query = 'INSERT INTO participants (user_id, event_id) VALUES ("' + userId + '",'+'"' + eventId + '")';
   connection.query(query,(err,rows) =>{
