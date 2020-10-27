@@ -156,7 +156,7 @@ router.post("/delete/:id",(req,res) => {
 //参加者表示
 router.get("/example" , (req,res) =>{
   //console.log("届いてる");
-  const query = `SELECT * FROM participants where event_id = ${eventId}`;
+  const query = `SELECT * FROM participant where event_id = ${eventId}`;
   connection.query(query,(err,rows) =>{
   console.log(rows);
   res.render('eventjoin',{eventList: [{}], participantList: rows});
@@ -166,7 +166,7 @@ router.get("/example" , (req,res) =>{
 //参加予定イベント表示
 // router.get("/example" , (req,res) =>{
 //   //console.log("届いてる");
-//   const query = `SELECT * FROM events where participants_id = ${paricipantId}`;
+//   const query = `SELECT * FROM events where participant_id = ${paricipantId}`;
 //   connection.query(query,(err,rows) =>{
 //   console.log(rows);
 //   res.render('account',{participantList: [{}], eventList: rows});
